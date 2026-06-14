@@ -323,28 +323,31 @@
                 command: "sudo macchanger -r eth0"
             }
         ];
+function displayTools(tools) {
+    const container = document.getElementById('tools-container');
+    container.innerHTML = '';
 
-        function displayTools(tools) {
-            const container = document.getElementById('tools-container');
-            container.innerHTML = ''; 
+    if (tools.length === 0) {
+        container.innerHTML = '<p style="color: red; font-weight: bold; padding: 10px;">No tools found!</p>';
+        return;
+    }
 
-            if(tools.length === 0) {
-                container.innerHTML = '<p style="color: red; font-weight: bold; padding: 10px;">No tools found! Try searching for Hydra, SQLmap, or Nmap.</p>';
-                return;
-            }
+    tools.forEach(tool => {
+        const card = document.createElement('div');
+        card.className = 'tool-card';
+        card.innerHTML = `
+            <h4 class="tool-title">${tool.name} [${tool.category}]</h4>
+            <p class="tool-info"><strong>Description:</strong> ${tool.description}</p>
+            <p class="tool-info"><strong>Installation Guide:</strong> <code>${tool.installation}</code></p>
+            <p class="tool-info"><strong>Run Command:</strong></p>
+            <div class="command-box">${tool.command}</div>
+        `;
+        container.appendChild(card);
+    });
+}
+}
 
-            tools.forEach(tool => {
-                const card = document.createElement('div');
-                card.className = 'tool-card';
-                card.innerHTML = `
-                    <h4 class="tool-title">${tool.name} [${tool.category}]</h4>
-                    <p class="tool-info"><strong>Description:</strong> ${tool.description}</p>
-                    <p class="tool-info"><strong>Installation Guide:</strong> <code>${tool.download}</code></p>
-                    <p class="tool-info"><strong>Run Command:</strong></p>
-                    <div class="command-box">${tool.command}</div>
-                `;
-                container.appendChild(card);
-            });
+        
         }
 
         displayTools(toolsData);
