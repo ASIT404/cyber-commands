@@ -1,15 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Command Hub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            border-bottom: 3px solid #0056b3;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .menu-btn {
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-right: 15px;
+        }
+        .header h1 {
+            color: #0056b3;
+            margin: 0;
+            font-size: 24px;
+        }
+        .disclaimer-box {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+        .search-bar:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+        .category-section h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+        .cat-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px 5px 5px 0;
+            font-size: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .cat-btn:hover {
+            background-color: #0056b3;
+        }
+        #tools-container {
+            margin-top: 20px;
+        }
+        .tool-card {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .tool-title {
+            color: #0056b3;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 16px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .tool-info {
             font-size: 14px;
             margin: 5px 0;
         }
-
         .command-box {
-            background-color: #21262d;
-            color: #00ff00;
+            background-color: #1e1e1e;
+            color: #ff3333;
             padding: 10px;
             border-radius: 4px;
             font-family: monospace;
             overflow-x: auto;
             margin-top: 5px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -29,68 +122,74 @@
     <div class="category-section">
         <h3>Select Category:</h3>
         <button class="cat-btn">Linux Commands 🐧</button>
-        <button class="cat-btn">Termux Commands 📲</button>
+        <button class="cat-btn">Termux Commands 📱</button>
         <button class="cat-btn">Terminal Commands 🖥️</button>
     </div>
 
     <div id="tools-container"></div>
-<script>
-    <script src="tools.js"></script>             
-function displayTools(tools) {
-    const container = document.getElementById('tools-container');
-    container.innerHTML = '';
 
-    if (tools.length === 0) {
-        container.innerHTML = '<p style="color: red; font-weight: bold; padding: 10px;">No tools found!</p>';
-        return;
-    }
+    <script src="tools.js"></script>
 
-    tools.forEach(tool => {
-        const card = document.createElement('div');
-        card.className = 'tool-card';
-        card.innerHTML = `
-            <h4 class="tool-title">${tool.name} [${tool.category}]</h4>
-            <p class="tool-info"><strong>Description:</strong> ${tool.description}</p>
-            <p class="tool-info"><strong>Installation Guide:</strong> <code>${tool.installation}</code></p>
-            <p class="tool-info"><strong>Run Command:</strong></p>
-            <div class="command-box">${tool.command}</div>
-        `;
-        container.appendChild(card);
-    });
-}
-}
+    <script>
+    // Function to render and display the tools on the page
+    function displayTools(tools) {
+        const container = document.getElementById('tools-container');
+        container.innerHTML = '';
 
-        
+        if (!tools || tools.length === 0) {
+            container.innerHTML = '<p style="color: red; font-weight: bold; padding: 10px;">No tools found!</p>';
+            return;
         }
 
-        // This code will display the tools after the entire file is fully loaded
-window.addEventListener('DOMContentLoaded', () => {
-    displayTools(toolsData);
-});
+        tools.forEach(tool => {
+            const card = document.createElement('div');
+            card.className = 'tool-card';
+            card.innerHTML = `
+                <h4 class="tool-title">${tool.name} [${tool.category}]</h4>
+                <p class="tool-info"><strong>Description:</strong> ${tool.description}</p>
+                <p class="tool-info"><strong>Installation Guide:</strong> <code>${tool.installation}</code></p>
+                <p class="tool-info"><strong>Run Command:</strong></p>
+                <div class="command-box">${tool.command}</div>
+            `;
+            container.appendChild(card);
+        });
+    }
 
-        document.querySelector('.search-bar').addEventListener('input', function(e) {
-            const searchWord = e.target.value.toLowerCase().trim();
+    // Event listener to render initial tools once the entire DOM is loaded
+    window.addEventListener('DOMContentLoaded', () => {
+        if (typeof toolsData !== 'undefined') {
+            displayTools(toolsData);
+        } else {
+            console.error("toolsData is not loaded from tools.js");
+        }
+    });
+
+    // Event listener for the real-time search functionality
+    document.querySelector('.search-bar').addEventListener('input', function(e) {
+        const searchWord = e.target.value.toLowerCase().trim();
+        if (typeof toolsData !== 'undefined') {
             const filteredTools = toolsData.filter(tool => {
                 return tool.name.toLowerCase().includes(searchWord) || 
                        tool.description.toLowerCase().includes(searchWord);
             });
             displayTools(filteredTools);
-        });
+        }
+    });
 
-        document.querySelectorAll('.cat-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const categoryName = this.innerText.split(' ')[0]; 
+    // Event listeners for filtering tools via category buttons
+    document.querySelectorAll('.cat-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const categoryName = this.innerText.split(' ')[0];
+            if (typeof toolsData !== 'undefined') {
                 const filteredTools = toolsData.filter(tool => {
                     return tool.category.toLowerCase() === categoryName.toLowerCase();
                 });
                 document.querySelector('.search-bar').value = categoryName;
                 displayTools(filteredTools);
-            });
+            }
         });
+    });
     </script>
-    
-    
+
 </body>
 </html>
-
-    
