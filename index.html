@@ -109,7 +109,7 @@
     width: 250px;
     position: fixed;
     top: 0;
-        display: none;
+        position: static;
     background-color: #1a1a1a;
     overflow-x: hidden;
     transition: 0.3s; /* खुलने और बंद होने का स्मूथ एनिमेशन */
@@ -151,8 +151,6 @@
 </head>
 <body>
     <div id="sidebar" class="sidebar">
-        <button class="close-btn">&times;</button>
-        <h2 style="color: white; padding: 10px 20px; margin: 0;">📋 Protection Guides</h2>
         <a href="#" class="guide-link" data-guide="awareness">Cyber Security Awareness 🛡️</a>
         <a href="#" class="guide-link" data-guide="passwords">Best Practices for Strong Passwords 🔑</a>
         <a href="#" class="guide-link" data-guide="browsing">Safe Browsing Tips 🌐</a>
