@@ -235,11 +235,17 @@ function displayGuide(guideId) {
 document.addEventListener('DOMContentLoaded', () => {
     const links = document.querySelectorAll('.guide-link');
     links.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const guideId = link.getAttribute('data-guide');
-            displayGuide(guideId);
-        });
+     link.addEventListener('click', (e) => {
+    // If the link does not contain "#" (it has a real page name), allow the browser to open it
+    if (link.getAttribute('href') !== '#') {
+        return; 
+    }
+    
+    // For other links with "#", prevent default behavior and load content inline
+    e.preventDefault();
+    const guideId = link.getAttribute('data-guide');
+    displayGuide(guideId);
+});   
     });
 });
         
