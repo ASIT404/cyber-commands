@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wi-Fi Security Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #2a2a2a;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        h1 {
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #ffc107;
+            margin-top: 25px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 12px;
+        }
+        .alert-box {
+            background-color: #3a2a2a;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #0056b3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .back-btn:hover {
+            background-color: #004085;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Wi-Fi Security Guide 📶</h1>
+    
+    <p><strong>Introduction to Wireless Risks:</strong> Wireless networks have revolutionized how we connect to the digital world, bringing immense convenience to homes, offices, and public spaces. However, because Wi-Fi signals travel through the air, they can be intercepted by anyone within range. Without proper protective measures, unauthorized users can monitor your online activities, hijack your accounts, and compromise your personal devices. Securing both your home router and managing how you connect to outside networks is vital for robust digital defense.</p>
+    
+    <h2>1. The Hidden Dangers of Public Wi-Fi</h2>
+    <div class="alert-box">
+        <strong>Warning on Open Networks:</strong> Coffee shops, airports, and hotels often offer free, unprotected Wi-Fi. Attackers can easily set up "Man-in-the-Middle" (MitM) attacks on these networks to capture unencrypted data passing between your browser and the web server.
+    </div>
+    <p>Another dangerous tactic is the "Evil Twin" attack, where a cybercriminal deploys a rogue wireless access point with the exact same name as a legitimate hotspot (e.g., "Free_Hotel_WiFi"). When your phone automatically connects to it, all your internet traffic flows directly through the hacker's machine. To stay safe outside, always use a reputable Virtual Private Network (VPN) to encrypt your traffic, and disable the "Auto-Connect to Open Networks" feature on your mobile devices.</p>
+    
+    <h2>2. Securing Your Home Router Setup</h2>
+    <ul>
+        <li><strong>Change Default Credentials:</strong> Routers ship with factory-default usernames and passwords (like admin/admin). These lists are widely available online. Changing the admin access password immediately is your primary shield.</li>
+        <li><strong>Implement Strong Encryption:</strong> Check your router settings and ensure the wireless security protocol is set to at least <strong>WPA2-AES</strong> or, ideally, the newer <strong>WPA3</strong> framework. Avoid using outdated WPA or WEP standards, which can be cracked within minutes using automated software.</li>
+        <li><strong>Modify the SSID Name:</strong> Change the default network name (SSID) to something neutral. Default names often broadcast the manufacturer and model of your router, giving potential intruders clues about specific device vulnerabilities.</li>
+    </ul>
+
+    <h2>3. Advanced Local Network Hardening</h2>
+    <p>To implement an elite level of network security, dive deeper into your router console settings. It is a highly effective strategy to disable <strong>Wi-Fi Protected Setup (WPS)</strong>, as it contains structural design vulnerabilities that allow simple brute-force tools to guess the PIN. Additionally, keep your router firmware regularly updated to protect against firmware-level bugs. If your hardware supports it, create an isolated <strong>Guest Network</strong> specifically dedicated to your smart IoT devices and visiting friends. This setup ensures that even if a secondary device is compromised, your primary laptops and file storage remain completely separated and safe.</p>
+    
+    <a href="index.html" class="back-btn">← Go Back to Home</a>
+</div>
+
+</body>
+</html>
+
