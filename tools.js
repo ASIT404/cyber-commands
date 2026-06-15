@@ -35,4 +35,25 @@ window.toolsData = [
     description: "A powerful wordlist generator where you can specify standard character sets or custom patterns to build robust dictionaries for testing.",
     installation: "To install on standard terminals or Termux type: apt install crunch",
     command: "crunch 6 8 abcdef123 -o custom_wordlist.txt"
+},
+{
+    name: "Cupp [Terminal]",
+    category: "terminal",
+    description: "An automated password profiling tool that generates highly targeted wordlists based on a specific target's personal information like birthdates, nicknames, and hobbies.",
+    installation: "git clone https://github.com/Mebus/cupp.git",
+    command: "python3 cupp.py -i"
+},
+{
+    name: "Medusa [Terminal]",
+    category: "terminal",
+    description: "A speedy, parallel, and modular security auditing tool designed to brute-force network authentication logs across multiple remote services simultaneously.",
+    installation: "Available in security repositories. Install via: apt install medusa",
+    command: "medusa -h 192.168.1.1 -u admin -P passwords.txt -M ssh"
+},
+{
+    name: "Ncrack [Terminal]",
+    category: "terminal",
+    description: "A high-speed network authentication cracking tool built for enterprise security testing, helping auditors find weak credentials across massive networks.",
+    installation: "To install on Linux or Termux environments type: apt install ncrack",
+    command: "ncrack --user admin -P passwords.txt ftp://192.168.1.5"
 }
