@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Bug Bounty Programs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #2a2a2a;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        h1 {
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #ffc107;
+            margin-top: 25px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 12px;
+        }
+        .tech-box {
+            background-color: #212d3a;
+            border-left: 4px solid #0056b3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #0056b3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .back-btn:hover {
+            background-color: #004085;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Introduction to Bug Bounty Programs 🐛</h1>
+    
+    <p><strong>The Evolution of Crowdsourced Security:</strong> A bug bounty program is a structured crowdsourcing initiative implemented by organizations to incentivize independent cybersecurity researchers to discover and safely report software vulnerabilities. In the early days of corporate IT, security was managed exclusively by small, internal engineering teams. However, as applications grew in complexity, organizations realized that external crowdsourced security operations bring diverse perspectives, allowing platforms to find critical bugs before malicious hackers can exploit them on live production networks.</p>
+    
+    <h2>1. The Core Ecosystem of Ethical Hacking</h2>
+    <p>Bug bounty platforms connect massive tech corporations with global communities of security analysts. This ecosystem operates on specific operational frameworks:</p>
+    <ul>
+        <li><strong>Vulnerability Platforms:</strong> Organizations like HackerOne, Bugcrowd, and Intigriti act as trusted third-party mediators. They handle payment routing, verify independent report validity, and ensure clear communication boundaries between companies and researchers.</li>
+        <li><strong>The Scope Architecture:</strong> Every program has a strict documentation profile known as the "Scope." This outlines exactly which target assets (domains, API gateways, mobile binaries) are open for testing, and explicitly defines forbidden tactics like Denial of Service (DoS) attacks.</li>
+    </ul>
+
+    <h2>2. Common Vulnerability Targets in Web Security</h2>
+    <div class="tech-box">
+        <strong>The Importance of Owning the Testing Flow:</strong> Security researchers analyze parameters to discover coding flaws. Understanding common vulnerability types is crucial for anyone starting in web application security testing.
+    </div>
+    <p>Researchers often search for flaws listed in frameworks like the OWASP Top 10. These include <strong>Cross-Site Scripting (XSS)</strong>, where a tester injects malicious scripts into standard inputs to run code on an innocent user's browser session. Another frequent discovery is <strong>IDOR (Insecure Direct Object References)</strong>, a logical flaw where changing a database integer inside a URL parameter grants unauthorized access to another user's personal account dashboard records.</p>
+
+    <h2>3. The Professional Methodology for Beginners</h2>
+    <p>Succeeding in crowdsourced security testing requires deep systematic persistence rather than quick automated tools:</p>
+    <ul>
+        <li><strong>Master the Foundations:</strong> Before trying to hack complex web targets, invest time into learning the deep mechanics of HTTP request headers, cookie management frameworks, database structures, and Linux server operations.</li>
+        <li><strong>Practice in Safe Laboratories:</strong> Avoid scanning public servers without clear program enrollment. Instead, build your baseline skills using legal training environments like PortSwigger Web Security Academy or vulnerable web machines.</li>
+        <li><strong>Write Elite Bug Reports:</strong> When you discover a legitimate flaw, your report must follow strict professional guidelines. Include a clear summary, step-by-step reproduction guidelines, and a functional Proof of Concept (PoC) block so engineers can replicate the fix.</li>
+    </ul>
+
+    <h2>4. The Absolute Rule: Strict Ethical Boundaries</h2>
+    <p>The difference between a professional bug hunter and a cybercriminal lies entirely in authorization and disclosure rules. Responsible disclosure means you never share details about a vulnerability publicly until the engineering team has completely patched the gap and granted explicit permission. Bypassing these rules can result in permanent platform bans and legal consequences. By acting with professional integrity and respecting program boundaries, you contribute directly to making the global internet infrastructure safe for everyone.</p>
+    
+    <a href="index.html" class="back-btn">← Go Back to Home</a>
+</div>
+
+</body>
+</html>
