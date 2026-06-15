@@ -177,13 +177,6 @@
 
     <input type="text" class="search-bar" placeholder="Search Tools and Commands...">
 
-    <div class="category-section">
-        <h3>Select Category:</h3>
-        <button class="cat-btn">Linux Commands 🐧</button>
-        <button class="cat-btn">Termux Commands 📱</button>
-        <button class="cat-btn">Terminal Commands 🖥️</button>
-    </div>
-
     <div id="tools-container"></div>
 
     <script src="tools.js"></script>
@@ -248,7 +241,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });   
     });
 });
-        
     // Function to render and display the tools on the page
     function displayTools(tools) {
         const container = document.getElementById('tools-container');
