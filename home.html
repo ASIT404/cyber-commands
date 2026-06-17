@@ -88,8 +88,9 @@
     <div class="sidebar" id="sidebar">
         <button class="close-btn" id="closeBtn">&times;</button>
         <div class="sidebar-content">
-            <h3>Menu Options</h3>
-            <p>Future features will be added here...</p>
+            <h3>Cyber Tools</h3>
+<button class="tool-menu-btn" onclick="loadIPScanner()">🖥️ IP & Port Scanner</button>
+            
         </div>
     </div>
     
@@ -208,6 +209,51 @@
     
     <script>
     // JavaScript logic hum baad me yahan jodenge
+        function loadIPScanner() {
+    const mainContent = document.querySelector('.main-content');
+    mainContent.innerHTML = `
+        <div style="background: #111; border: 1px solid #ff0000; padding: 20px; border-radius: 5px; color: #fff; font-family: monospace;">
+            <h2 style="color: #ff0000; border-bottom: 1px solid #ff0000; padding-bottom: 10px;">🖥️ IP & Port Scanner</h2>
+            <p>Target IP or Domain:</p>
+            <input type="text" id="targetInput" value="127.0.0.1" style="background: #000; color: #00ff00; border: 1px solid #ff0000; padding: 8px; width: 80%; font-family: monospace;">
+            <br><br>
+            <button onclick="startScan()" style="background: #ff0000; color: #000; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold;">Start Scan</button>
+            
+            <div id="scanTerminal" style="margin-top: 20px; background: #000; border: 1px solid #333; padding: 15px; min-height: 150px; text-align: left; overflow-y: auto; color: #00ff00;">
+                [+] System ready. Press "Start Scan" to begin diagnostics...
+            </div>
+        </div>
+    `;
+    
+    document.getElementById('sidebar').style.left = '-250px';
+}
+
+function startScan() {
+    const target = document.getElementById('targetInput').value;
+    const terminal = document.getElementById('scanTerminal');
+    terminal.innerHTML = `[+] Initiating connection to: ${target}...<br>`;
+    
+    let commonPorts = [21, 22, 23, 25, 53, 80, 110, 443, 8080];
+    let currentPortIndex = 0;
+
+    let interval = setInterval(() => {
+        if (currentPortIndex < commonPorts.length) {
+            let port = commonPorts[currentPortIndex];
+            terminal.innerHTML += `[+] Checking Port ${port}... `;
+            
+            if (port === 80 || port === 443 || port === 8080) {
+                terminal.innerHTML += `<span style="color: #ff0000; font-weight: bold;">[OPEN]</span><br>`;
+            } else {
+                terminal.innerHTML += `<span style="color: #555;">[CLOSED]</span><br>`;
+            }
+            currentPortIndex++;
+        } else {
+            clearInterval(interval);
+            terminal.innerHTML += `<br>[√] Scan completed for ${target}. Diagnostics finished.`;
+        }
+    }, 400);
+}
+        
         document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.getElementById('menuBtn');
     const closeBtn = document.getElementById('closeBtn');
