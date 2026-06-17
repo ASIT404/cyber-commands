@@ -260,7 +260,7 @@
     
     terminal.innerHTML = `[+] Initiating network connection to: ${target}...<br>`;
     
-    let commonPorts = [21, 22, 23, 25, 53, 80, 110, 443, 8080];
+        let commonPorts = [21, 22, 23, 25, 53, 80, 110, 443, 8080];
     let currentPortIndex = 0;
 
     let interval = setInterval(() => {
@@ -268,17 +268,27 @@
             let port = commonPorts[currentPortIndex];
             terminal.innerHTML += `[+] Checking Port ${port}... `;
             
-            if (port === 80 || port === 443 || port === 8080) {
-                terminal.innerHTML += `<span style="color: #ff0000; font-weight: bold;">[OPEN]</span><br>`;
-            } else {
-                terminal.innerHTML += `<span style="color: #555;">[CLOSED]</span><br>`;
-            }
+            // 🔌 Termux के असली Python सर्वर से कनेक्शन
+            fetch(`http://127.0.0.1:5000/scan?target=${target}&port=${port}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "OPEN") {
+                        terminal.innerHTML += `<span style="color: #00ff00; font-weight: bold;">[OPEN]</span><br>`;
+                    } else {
+                        terminal.innerHTML += `<span style="color: #555;">[CLOSED]</span><br>`;
+                    }
+                })
+                .catch(err => {
+                    terminal.innerHTML += `<span style="color: #ff0000;">[ERR] Server Offline</span><br>`;
+                });
+
             currentPortIndex++;
         } else {
             clearInterval(interval);
             terminal.innerHTML += `<br>[√] Scan completed for ${target}. Diagnostics finished.`;
         }
-    }, 400);
+    }, 600);
+                
  }
 document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.getElementById('menuBtn');
